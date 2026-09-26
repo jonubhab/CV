@@ -97,7 +97,7 @@
   const levelWidth = { 'Beginner': '30%', 'Moderate': '65%', 'Fluent': '100%' };
 
   function render(data) {
-    document.title = data.profile.name + ' — CV';
+    document.title = data.profile.name;
     document.getElementById('docPhoto').src = data.profile.photo;
     document.getElementById('docPhoto').alt = data.profile.name;
     document.getElementById('docName').textContent = data.profile.name;
