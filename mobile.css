@@ -123,10 +123,11 @@ button {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
+  text-decoration: none;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.icon-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.icon-btn:hover { background: var(--accent-soft); border-color: var(--accent); text-decoration: none; }
 
 .icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
 
@@ -154,21 +155,22 @@ button {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-}
-
-.sidebar {
-  width: 100%;
-  background: var(--sidebar-bg);
-  border-right: none;
-  border-bottom: 1px solid var(--border);
-  padding: 20px 16px 30px;
-  min-height: 0;
-}
-
-.content {
-  flex: 1;
-  min-width: 0;
   padding: 20px 16px 40px;
+}
+
+/* Sections come in two visual flavors, applied directly per-section
+   (rather than via an aside/main ancestor) so they can be freely
+   reordered — see mobile.html for the actual order. */
+
+.section--panel {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px 20px;
+}
+
+.section--content {
+  padding: 0;
 }
 
 /* ---------------- Section headings ---------------- */
@@ -187,7 +189,7 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
-.content .section__title {
+.section--content .section__title {
   font-size: 0.95rem;
   color: var(--text);
   text-transform: none;

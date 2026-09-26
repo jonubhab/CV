@@ -266,13 +266,9 @@ function renderExams(data) {
 async function boot() {
   initIcons();
   initThemeToggle();
-  document.getElementById('downloadBtn').addEventListener('click', () => {
-    const frame = document.getElementById('printFrame');
-    // A fresh src (with a cache-busting param) forces doc.html to reload and
-    // re-render from data.json, then it calls window.print() on itself once
-    // ready — see the ?autoprint handling in doc.html.
-    frame.src = 'doc.html?autoprint=1&t=' + Date.now();
-  });
+  // downloadBtn is a plain <a download> pointing at assets/Anubhab Sen - CV.pdf —
+  // no JS needed to trigger it. To regenerate that PDF after editing data.json,
+  // open doc.html locally and use its own "Download as PDF" button.
 
   try {
     const res = await fetch('data.json');

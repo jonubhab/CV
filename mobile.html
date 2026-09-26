@@ -28,9 +28,9 @@
     </div>
     <div class="topbar__spacer"></div>
     <div class="topbar__actions">
-      <button id="downloadBtn" class="icon-btn icon-btn--wide" title="Download Resume" aria-label="Download Resume">
+      <a id="downloadBtn" class="icon-btn icon-btn--wide" href="assets/Anubhab%20Sen%20-%20CV.pdf" download="Anubhab Sen - CV.pdf" title="Download Resume" aria-label="Download Resume">
         <span class="icon-download"></span><span class="btn-label">Resume</span>
-      </button>
+      </a>
       <button id="themeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
         <span class="icon-sun"></span>
         <span class="icon-moon"></span>
@@ -39,67 +39,62 @@
   </header>
 
   <div id="app" class="layout">
-    <aside class="sidebar">
 
-      <section class="section">
-        <h2 class="section__title">Contact</h2>
-        <ul id="contactList" class="contact-list"></ul>
-      </section>
+    <!-- Mobile order of importance: Contact, Education, Experience,
+         Extracurricular, Independent Projects, Computer Skills,
+         Competitive Exams, Languages, Hobbies. -->
 
-      <section class="section">
-        <h2 class="section__title">Computer Skills</h2>
-        <div id="skillsList"></div>
-      </section>
+    <section class="section section--panel">
+      <h2 class="section__title">Contact</h2>
+      <ul id="contactList" class="contact-list"></ul>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Languages</h2>
-        <div id="languagesList"></div>
-      </section>
+    <section class="section section--content">
+      <h2 class="section__title">Education</h2>
+      <div id="educationList"></div>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Hobbies</h2>
-        <div id="hobbiesList"></div>
-      </section>
+    <section class="section section--content">
+      <h2 class="section__title">Experience</h2>
+      <div id="experienceList"></div>
+    </section>
 
-    </aside>
+    <section class="section section--content">
+      <h2 class="section__title">Extracurricular Activities</h2>
+      <div id="extracurricularList"></div>
+    </section>
 
-    <main class="content">
+    <section class="section section--content">
+      <h2 class="section__title">Independent Projects</h2>
+      <div id="projectsGrid" class="project-grid"></div>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Education</h2>
-        <div id="educationList"></div>
-      </section>
+    <section class="section section--panel">
+      <h2 class="section__title">Computer Skills</h2>
+      <div id="skillsList"></div>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Experience</h2>
-        <div id="experienceList"></div>
-      </section>
+    <section class="section section--content">
+      <h2 class="section__title">Competitive Examinations</h2>
+      <table class="exam-table">
+        <thead>
+          <tr><th>Date</th><th>Exam</th><th>Organizing Institute</th><th>Result</th></tr>
+        </thead>
+        <tbody id="examsBody"></tbody>
+      </table>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Extracurricular Activities</h2>
-        <div id="extracurricularList"></div>
-      </section>
+    <section class="section section--panel">
+      <h2 class="section__title">Languages</h2>
+      <div id="languagesList"></div>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Independent Projects</h2>
-        <div id="projectsGrid" class="project-grid"></div>
-      </section>
+    <section class="section section--panel">
+      <h2 class="section__title">Hobbies</h2>
+      <div id="hobbiesList"></div>
+    </section>
 
-      <section class="section">
-        <h2 class="section__title">Competitive Examinations</h2>
-        <table class="exam-table">
-          <thead>
-            <tr><th>Date</th><th>Exam</th><th>Organizing Institute</th><th>Result</th></tr>
-          </thead>
-          <tbody id="examsBody"></tbody>
-        </table>
-      </section>
-
-    </main>
   </div>
-
-  <iframe id="printFrame" title="Resume print" aria-hidden="true"
-    style="position:fixed;width:0;height:0;border:0;visibility:hidden;"></iframe>
 
   <script src="mobile.js"></script>
 </body>

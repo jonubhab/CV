@@ -126,10 +126,11 @@ button {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
+  text-decoration: none;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.icon-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.icon-btn:hover { background: var(--accent-soft); border-color: var(--accent); text-decoration: none; }
 
 .icon-btn svg { width: 18px; height: 18px; stroke: currentColor; }
 
@@ -150,9 +151,11 @@ button {
 
 .layout {
   display: flex;
+  flex-wrap: nowrap;
   align-items: flex-start;
   max-width: 1180px;
   margin: 0 auto;
+  overflow-x: auto;
 }
 
 .sidebar {
@@ -160,13 +163,13 @@ button {
   flex-shrink: 0;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--border);
-  padding: 26px 24px 60px;
+  padding: 45px 24px 60px;
   min-height: calc(100vh - 73px);
 }
 
 .content {
   flex: 1;
-  min-width: 0;
+  min-width: 520px;
   padding: 26px 32px 60px;
 }
 
@@ -424,13 +427,12 @@ a:focus-visible, button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ---------------- Responsive fallback (narrow desktop window) ---------------- */
+/* ---------------- Narrow desktop window ----------------
+   Below the content's comfortable min-width, the sidebar and
+   content no longer wrap/stack — the .layout row scrolls
+   horizontally instead (scrollbar at the bottom). */
 
-@media (max-width: 860px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); min-height: 0; }
-  .exam-table { display: block; overflow-x: auto; }
-}
+.exam-table { display: block; overflow-x: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }

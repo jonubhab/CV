@@ -109,7 +109,7 @@ function renderLanguages(data) {
     ['speaking', 'reading', 'writing'].forEach(skill => {
       const bar = el('div', 'lang-bar');
       const label = skill.charAt(0).toUpperCase() + skill.slice(1);
-      const width = levelWidth[lang[skill]] || '50%';
+      const width = lang[skill] || '50%';
       bar.innerHTML = `<div class="lang-bar__track"><div class="lang-bar__fill" style="width:${width}"></div></div>${label}`;
       bars.appendChild(bar);
     });
@@ -156,12 +156,16 @@ function renderEducation(data) {
     const lines = el('div', 'entry__lines');
     lines.appendChild(el('div', null, `<strong>${item.degree}</strong>`));
     lines.appendChild(el('div', null, item.subject));
-    lines.appendChild(el('div', null, `Result: ${item.result}`));
+    lines.appendChild(el('div', null, `${item.result}`));
     body.appendChild(lines);
 
     const foot = el('div', 'entry__foot');
     foot.appendChild(el('span'));
-    foot.appendChild(viewLink(item.certificateLink, 'Certificate'));
+
+    if (item.institute==="Indian Institute of Science Education and Research (IISER)")
+      foot.appendChild(viewLink(item.certificateLink, 'Transcript'));
+    else
+      foot.appendChild(viewLink(item.certificateLink, 'Certificate'));
     body.appendChild(foot);
 
     entry.appendChild(body);
@@ -253,10 +257,9 @@ function renderExams(data) {
 async function boot() {
   initIcons();
   initThemeToggle();
-  document.getElementById('downloadBtn').addEventListener('click', () => {
-    const frame = document.getElementById('printFrame');
-    frame.src = 'doc.html?autoprint=1&t=' + Date.now();
-  });
+  // downloadBtn is a plain <a download> pointing at assets/Anubhab Sen - CV.pdf —
+  // no JS needed to trigger it. To regenerate that PDF after editing data.json,
+  // open doc.html locally and use its own "Download as PDF" button.
 
   try {
     const res = await fetch('data.json');
