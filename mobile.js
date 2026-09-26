@@ -61,7 +61,7 @@ function renderProfile(data) {
   document.getElementById('topbarPhoto').alt = data.profile.name;
   document.getElementById('topbarName').textContent = data.profile.name;
   document.getElementById('topbarRole').textContent = data.profile.designation;
-  document.title = data.profile.name + ' — CV';
+  document.title = data.profile.name;
 }
 
 function renderContact(data) {
