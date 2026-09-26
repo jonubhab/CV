@@ -1,0 +1,250 @@
+/* ============================================================
+   Digital CV — Compact single-page (A4) print stylesheet
+   Light mode only.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #e7e8ea;
+  --page: #ffffff;
+  --sidebar-bg: #2f4356;
+  --sidebar-text: #eef2f6;
+  --sidebar-muted: #b7c3d1;
+  --accent: #2f4356;
+  --accent-soft: #eef2f6;
+  --text: #1c1e22;
+  --text-muted: #5b6270;
+  --border: #dde1e6;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--bg);
+}
+
+.toolbar button {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: 1px solid #c7cad0;
+  background: #ffffff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toolbar button:hover { background: var(--accent-soft); }
+
+.page-wrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--page);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------------- Header ---------------- */
+
+.doc-header {
+  display: flex;
+  align-items: stretch;
+  height: 138px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.doc-header__photo-wrap {
+  width: 33%;
+  height: 100%;
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doc-header__photo {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--page);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.doc-header__right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.doc-header__name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.doc-header__role {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.doc-header__quick {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+/* ---------------- Body columns ---------------- */
+
+.doc-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.doc-sidebar {
+  width: 33%;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 18px 18px;
+}
+
+.doc-main {
+  flex: 1;
+  padding: 18px 22px;
+  min-width: 0;
+}
+
+.doc-section { margin-bottom: 14px; }
+.doc-section:last-child { margin-bottom: 0; }
+
+.doc-sidebar .doc-section__title {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sidebar-muted);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 4px;
+  margin: 0 0 8px;
+}
+
+.doc-main .doc-section__title {
+  font-family: 'Fraunces', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  margin: 0 0 8px;
+}
+
+/* Sidebar contact */
+
+.doc-contact { list-style: none; margin: 0; padding: 0; font-size: 9px; }
+.doc-contact li { margin-bottom: 6px; }
+.doc-contact .label { display: block; color: var(--sidebar-muted); font-size: 7.8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.doc-contact .value { color: var(--sidebar-text); word-break: break-word; }
+
+/* Sidebar skills / hobbies tags */
+
+.doc-skill-group { margin-bottom: 9px; }
+.doc-skill-group__label { font-size: 9px; font-weight: 600; margin-bottom: 4px; }
+.doc-tag-row { font-size: 8.6px; color: var(--sidebar-muted); line-height: 1.5; }
+
+/* Sidebar languages */
+
+.doc-lang { margin-bottom: 8px; font-size: 9px; }
+.doc-lang__name { font-weight: 600; margin-bottom: 3px; }
+.doc-lang__bars { display: flex; gap: 9px; color: var(--sidebar-muted); font-size: 7.8px; }
+.doc-lang__track { width: 28px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 2px; display: inline-block; margin-right: 3px; overflow: hidden; vertical-align: middle; }
+.doc-lang__fill { height: 100%; background: #ffffff; display: block; }
+
+/* Main entries */
+
+.doc-entry { display: flex; gap: 10px; margin-bottom: 11px; }
+.doc-entry:last-child { margin-bottom: 0; }
+
+.doc-entry__logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.doc-entry__body { flex: 1; min-width: 0; }
+
+.doc-entry__top { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.doc-entry__title { font-weight: 600; font-size: 10.5px; }
+.doc-entry__meta { font-size: 8.5px; color: var(--text-muted); white-space: nowrap; }
+.doc-entry__sub { font-size: 9.5px; color: var(--accent); margin-top: 1px; }
+.doc-entry__desc { font-size: 9.2px; color: var(--text-muted); margin-top: 1px; }
+
+/* Projects */
+
+.doc-project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 14px; }
+.doc-project { font-size: 9.2px; }
+.doc-project__name { font-weight: 600; }
+.doc-project__desc { color: var(--text-muted); font-size: 8.6px; }
+
+/* Exams table */
+
+.doc-exam-table { width: 100%; border-collapse: collapse; font-size: 8px; }
+.doc-exam-table th {
+  text-align: left;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  padding: 0 8px 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.doc-exam-table td { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--border); }
+.doc-exam-table tr:last-child td { border-bottom: none; }
+.doc-exam-table td.result { color: var(--accent); font-weight: 500; white-space: nowrap; }
+.doc-exam-table td.date { color: var(--text-muted); white-space: nowrap; }
+
+/* ---------------- Print ---------------- */
+
+@media print {
+  .toolbar { display: none; }
+  html, body { background: var(--page); }
+  .page-wrap { padding: 0; }
+  .page { box-shadow: none; width: 100%; height: 100%; }
+  @page { size: A4; margin: 0; }
+}

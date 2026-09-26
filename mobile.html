@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital CV</title>
+<link rel="stylesheet" href="mobile.css">
+<script>
+  // Apply saved / system theme immediately to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var saved = localStorage.getItem('cv-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+</head>
+<body>
+
+  <header class="topbar">
+    <img id="topbarPhoto" class="topbar__photo" src="" alt="">
+    <div class="topbar__id">
+      <div id="topbarName" class="topbar__name">Loading…</div>
+      <div id="topbarRole" class="topbar__role"></div>
+    </div>
+    <div class="topbar__spacer"></div>
+    <div class="topbar__actions">
+      <button id="downloadBtn" class="icon-btn icon-btn--wide" title="Download Resume" aria-label="Download Resume">
+        <span class="icon-download"></span><span class="btn-label">Resume</span>
+      </button>
+      <button id="themeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <span class="icon-sun"></span>
+        <span class="icon-moon"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="app" class="layout">
+    <aside class="sidebar">
+
+      <section class="section">
+        <h2 class="section__title">Contact</h2>
+        <ul id="contactList" class="contact-list"></ul>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Computer Skills</h2>
+        <div id="skillsList"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Languages</h2>
+        <div id="languagesList"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Hobbies</h2>
+        <div id="hobbiesList"></div>
+      </section>
+
+    </aside>
+
+    <main class="content">
+
+      <section class="section">
+        <h2 class="section__title">Education</h2>
+        <div id="educationList"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Experience</h2>
+        <div id="experienceList"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Extracurricular Activities</h2>
+        <div id="extracurricularList"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Independent Projects</h2>
+        <div id="projectsGrid" class="project-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Competitive Examinations</h2>
+        <table class="exam-table">
+          <thead>
+            <tr><th>Date</th><th>Exam</th><th>Organizing Institute</th><th>Result</th></tr>
+          </thead>
+          <tbody id="examsBody"></tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <iframe id="printFrame" title="Resume print" aria-hidden="true"
+    style="position:fixed;width:0;height:0;border:0;visibility:hidden;"></iframe>
+
+  <script src="mobile.js"></script>
+</body>
+</html>
