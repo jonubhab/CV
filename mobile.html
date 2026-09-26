@@ -5,18 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anubhab Sen</title>
 <link rel="stylesheet" href="mobile.css">
-<script>
-  // Apply saved / system theme immediately to avoid a flash of the wrong theme.
-  (function () {
-    try {
-      var saved = localStorage.getItem('cv-theme');
-      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  })();
-</script>
+<script src="theme-init.js"></script>
 </head>
 <body>
 
@@ -31,18 +20,10 @@
       <a id="downloadBtn" class="icon-btn icon-btn--wide" href="assets/Anubhab%20Sen%20-%20CV.pdf" download="Anubhab Sen - CV.pdf" title="Download Resume" aria-label="Download Resume">
         <span class="icon-download"></span><span class="btn-label">Resume</span>
       </a>
-      <button id="themeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
-        <span class="icon-sun"></span>
-        <span class="icon-moon"></span>
-      </button>
     </div>
   </header>
 
   <div id="app" class="layout">
-
-    <!-- Mobile order of importance: Contact, Education, Experience,
-         Extracurricular, Independent Projects, Computer Skills,
-         Competitive Exams, Languages, Hobbies. -->
 
     <section class="section section--panel">
       <h2 class="section__title">Contact</h2>
@@ -96,6 +77,6 @@
 
   </div>
 
-  <script src="mobile.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

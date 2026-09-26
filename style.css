@@ -1,39 +1,5 @@
-/* ============================================================
-   Digital CV — Desktop stylesheet
-   Theme: minimalist grey (light) / deep blue (dark)
-   ============================================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
-
-:root[data-theme="light"] {
-  --bg: #f1f2f4;
-  --surface: #ffffff;
-  --sidebar-bg: #e9eaed;
-  --border: #d9dbe0;
-  --text: #1c1e22;
-  --text-muted: #5b6270;
-  --accent: #3c5c78;
-  --accent-soft: #e4eaf0;
-  --accent-contrast: #ffffff;
-  --shadow: 0 1px 3px rgba(20, 24, 30, 0.07);
-  --placeholder: #b8bec8;
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-  --bg: #0b111c;
-  --surface: #121b29;
-  --sidebar-bg: #0e1621;
-  --border: #223049;
-  --text: #e7eaf0;
-  --text-muted: #8f9bb0;
-  --accent: #7aa7dc;
-  --accent-soft: #1a2536;
-  --accent-contrast: #0b111c;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --placeholder: #3a4a63;
-  color-scheme: dark;
-}
+@import url('theme.css');
 
 * { box-sizing: border-box; }
 
@@ -58,7 +24,7 @@ button {
   cursor: pointer;
 }
 
-/* ---------------- Top bar ---------------- */
+/* Top bar */
 
 .topbar {
   position: sticky;
@@ -141,13 +107,7 @@ button {
   font-weight: 500;
 }
 
-/* Sun/moon swap by theme */
-[data-theme="light"] .icon-moon { display: block; }
-[data-theme="light"] .icon-sun { display: none; }
-[data-theme="dark"] .icon-moon { display: none; }
-[data-theme="dark"] .icon-sun { display: block; }
-
-/* ---------------- Layout ---------------- */
+/* Layout */
 
 .layout {
   display: flex;
@@ -173,7 +133,7 @@ button {
   padding: 26px 32px 60px;
 }
 
-/* ---------------- Section headings ---------------- */
+/* Section headings */
 
 .section { margin-bottom: 34px; }
 .section:last-child { margin-bottom: 0; }
@@ -198,7 +158,7 @@ button {
   font-weight: 600;
 }
 
-/* ---------------- Sidebar: contact ---------------- */
+/* Contact */
 
 .contact-list {
   list-style: none;
@@ -225,7 +185,7 @@ button {
 
 .contact-list .value { word-break: break-word; }
 
-/* ---------------- Sidebar: skills ---------------- */
+/* Skills */
 
 .skill-group { margin-bottom: 14px; }
 .skill-group:last-child { margin-bottom: 0; }
@@ -251,7 +211,7 @@ button {
   border: 1px solid transparent;
 }
 
-/* ---------------- Sidebar: languages ---------------- */
+/* Languages */
 
 .lang-item { margin-bottom: 12px; }
 .lang-item:last-child { margin-bottom: 0; }
@@ -280,13 +240,13 @@ button {
 
 .lang-bar__fill { height: 100%; background: var(--accent); }
 
-/* ---------------- Sidebar: hobbies ---------------- */
+/* Hobbies */
 
 .hobby-group { margin-bottom: 12px; }
 .hobby-group:last-child { margin-bottom: 0; }
 .hobby-group__label { font-size: 0.78rem; font-weight: 600; margin-bottom: 6px; }
 
-/* ---------------- Main content: entries ---------------- */
+/* Main: entries */
 
 .entry {
   display: flex;
@@ -376,7 +336,7 @@ button {
 .project-card__name { font-weight: 600; font-size: 0.9rem; }
 .project-card__desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; }
 
-/* Competitive exams — compact table */
+/* Competitive exams */
 
 .exam-table {
   width: 100%;
@@ -405,7 +365,7 @@ button {
 .exam-table td.result { color: var(--accent); font-weight: 500; white-space: nowrap; }
 .exam-table td.date { color: var(--text-muted); white-space: nowrap; }
 
-/* ---------------- Loading / error state ---------------- */
+/* Loading Screen */
 
 .load-note {
   font-size: 0.85rem;
@@ -420,17 +380,12 @@ button {
   border-radius: 4px;
 }
 
-/* ---------------- Focus visibility ---------------- */
+/* Focus visibility */
 
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-
-/* ---------------- Narrow desktop window ----------------
-   Below the content's comfortable min-width, the sidebar and
-   content no longer wrap/stack — the .layout row scrolls
-   horizontally instead (scrollbar at the bottom). */
 
 .exam-table { display: block; overflow-x: auto; }
 

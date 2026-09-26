@@ -1,10 +1,6 @@
-/* ============================================================
-   Digital CV — Desktop script
-   Loads data.json and renders the sidebar + main content,
-   handles theme toggling and the PDF download shortcut.
-   ============================================================ */
-
 (function redirectToMobileIfNeeded() {
+  var onMobilePage = /mobile\.html$/.test(window.location.pathname);
+  if (onMobilePage) return; // already on the mobile page, nothing to redirect to
   var params = new URLSearchParams(window.location.search);
   if (params.get('view') === 'desktop') return; // explicit opt-out
   var isNarrow = window.matchMedia('(max-width: 700px)').matches;
@@ -16,8 +12,6 @@
 
 const ICONS = {
   eye: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>',
-  sun: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
-  moon: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>',
   download: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg>'
 };
 
@@ -43,28 +37,11 @@ function viewLink(url, label) {
   return a;
 }
 
-/* ---------------- Theme ---------------- */
-
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  try { localStorage.setItem('cv-theme', theme); } catch (e) {}
-}
 
 function initIcons() {
-  document.querySelectorAll('.icon-sun').forEach(n => n.innerHTML = ICONS.sun);
-  document.querySelectorAll('.icon-moon').forEach(n => n.innerHTML = ICONS.moon);
   document.querySelectorAll('.icon-download').forEach(n => n.innerHTML = ICONS.download);
 }
 
-function initThemeToggle() {
-  const btn = document.getElementById('themeToggle');
-  btn.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  });
-}
-
-/* ---------------- Renderers ---------------- */
 
 function renderProfile(data) {
   document.getElementById('topbarPhoto').src = data.profile.photo;
@@ -161,9 +138,9 @@ function renderEducation(data) {
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
     body.appendChild(el('div', 'entry__loc', item.location));
+    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.degree}</strong>`));
 
     const lines = el('div', 'entry__lines');
-    lines.appendChild(el('div', null, `<strong>${item.degree}</strong>`));
     lines.appendChild(el('div', null, item.subject));
     lines.appendChild(el('div', null, `${item.result}`));
     body.appendChild(lines);
@@ -198,8 +175,8 @@ function renderExperience(data) {
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
     body.appendChild(el('div', 'entry__loc', item.location));
-    body.appendChild(el('div', 'entry__subtitle', item.program));
-    body.appendChild(el('div', 'entry__desc', item.description));
+    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.program}</strong>`));
+    body.appendChild(el('div', 'entry__lines', item.description));
 
     const foot = el('div', 'entry__foot');
     foot.appendChild(el('span'));
@@ -226,7 +203,7 @@ function renderExtracurricular(data) {
     top.appendChild(el('div', 'entry__title', item.club));
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
-    body.appendChild(el('div', 'entry__subtitle', item.role));
+    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.role}</strong>`));
     body.appendChild(el('div', 'entry__desc', item.description));
 
     entry.appendChild(body);
@@ -261,14 +238,9 @@ function renderExams(data) {
   });
 }
 
-/* ---------------- Boot ---------------- */
 
 async function boot() {
   initIcons();
-  initThemeToggle();
-  // downloadBtn is a plain <a download> pointing at assets/Anubhab Sen - CV.pdf —
-  // no JS needed to trigger it. To regenerate that PDF after editing data.json,
-  // open doc.html locally and use its own "Download as PDF" button.
 
   try {
     const res = await fetch('data.json');
