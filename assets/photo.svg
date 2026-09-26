@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#cfd4dc"/>
-  <circle cx="100" cy="80" r="38" fill="#9aa5b6"/>
-  <path d="M30 190c0-45 31-70 70-70s70 25 70 70" fill="#9aa5b6"/>
-  <text x="100" y="196" font-family="Arial, sans-serif" font-size="10" fill="#5a6472" text-anchor="middle">Replace: assets/photo.svg</text>
-</svg>
