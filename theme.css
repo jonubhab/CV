@@ -1,3 +1,10 @@
+/* ============================================================
+   Digital CV — Shared theme tokens
+   Light / dark CSS custom properties, used by both style.css
+   (desktop) and mobile.css. Keeping these in one place avoids
+   the two stylesheets drifting out of sync.
+   ============================================================ */
+
 :root[data-theme="light"] {
   --bg: #f1f2f4;
   --surface: #ffffff;

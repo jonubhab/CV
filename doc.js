@@ -1,3 +1,9 @@
+/* ============================================================
+   Digital CV — Print/PDF script (doc.html)
+   Loads data.json and renders the single-page A4 layout used
+   for the "Download as PDF" flow.
+   ============================================================ */
+
 function el(tag, className, html) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -5,7 +11,9 @@ function el(tag, className, html) {
   return node;
 }
 
-
+/* Education, Experience and Extracurricular entries all share the
+   same card shape (logo + title/meta row + one or two sub-lines) —
+   one helper builds all three instead of repeating the DOM code. */
 function renderDocEntry(container, item, { logoAlt, title, meta, sub, desc }) {
   const entry = el('div', 'doc-entry');
   const logo = document.createElement('img');
@@ -31,7 +39,6 @@ function render(data) {
   document.getElementById('docRole').textContent = data.profile.designation;
   document.getElementById('docQuick').innerHTML =
     data.profile.personalEmail + '<br>' + data.profile.phone + '<br>' + data.profile.github;
-
 
   // Contact
   const contact = document.getElementById('docContact');
@@ -82,9 +89,9 @@ function render(data) {
     renderDocEntry(education, item, {
       logoAlt: item.institute + ' logo',
       title: item.institute,
-      meta: `${item.duration}<br>${item.location}`,
-      sub: `${item.degree} <br> ${item.subject}`,
-      desc: `${item.result}`
+      meta: item.duration,
+      sub: `${item.degree} — ${item.subject}`,
+      desc: `${item.location} · Result: ${item.result}`
     });
   });
 
@@ -94,7 +101,7 @@ function render(data) {
     renderDocEntry(experience, item, {
       logoAlt: item.institute + ' logo',
       title: item.institute,
-      meta: `${item.duration}<br>${item.location}`,
+      meta: item.duration,
       sub: item.program,
       desc: item.description
     });

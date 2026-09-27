@@ -1,3 +1,13 @@
+/* ============================================================
+   Digital CV — Shared script
+   Used by both index.html (desktop) and mobile.html. Loads
+   data.json and renders the sidebar + main content, and wires
+   up the PDF download shortcut. The two pages share identical
+   element IDs, so one render pipeline serves both — only the
+   layout/CSS differs between them. Theme (light/dark) is set
+   by theme-init.js, purely from the system preference.
+   ============================================================ */
+
 (function redirectToMobileIfNeeded() {
   var onMobilePage = /mobile\.html$/.test(window.location.pathname);
   if (onMobilePage) return; // already on the mobile page, nothing to redirect to
@@ -37,11 +47,16 @@ function viewLink(url, label) {
   return a;
 }
 
+/* ---------------- Icons ----------------
+   Theme is no longer user-toggleable — it always follows the
+   system/browser preference, applied by theme-init.js before
+   this script even runs. */
 
 function initIcons() {
   document.querySelectorAll('.icon-download').forEach(n => n.innerHTML = ICONS.download);
 }
 
+/* ---------------- Renderers ---------------- */
 
 function renderProfile(data) {
   document.getElementById('topbarPhoto').src = data.profile.photo;
@@ -138,9 +153,9 @@ function renderEducation(data) {
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
     body.appendChild(el('div', 'entry__loc', item.location));
-    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.degree}</strong>`));
 
     const lines = el('div', 'entry__lines');
+    lines.appendChild(el('div', null, `<strong>${item.degree}</strong>`));
     lines.appendChild(el('div', null, item.subject));
     lines.appendChild(el('div', null, `${item.result}`));
     body.appendChild(lines);
@@ -175,8 +190,8 @@ function renderExperience(data) {
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
     body.appendChild(el('div', 'entry__loc', item.location));
-    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.program}</strong>`));
-    body.appendChild(el('div', 'entry__lines', item.description));
+    body.appendChild(el('div', 'entry__subtitle', item.program));
+    body.appendChild(el('div', 'entry__desc', item.description));
 
     const foot = el('div', 'entry__foot');
     foot.appendChild(el('span'));
@@ -203,7 +218,7 @@ function renderExtracurricular(data) {
     top.appendChild(el('div', 'entry__title', item.club));
     top.appendChild(el('div', 'entry__meta', item.duration));
     body.appendChild(top);
-    body.appendChild(el('div', 'entry__subtitle', `<strong>${item.role}</strong>`));
+    body.appendChild(el('div', 'entry__subtitle', item.role));
     body.appendChild(el('div', 'entry__desc', item.description));
 
     entry.appendChild(body);
@@ -238,9 +253,13 @@ function renderExams(data) {
   });
 }
 
+/* ---------------- Boot ---------------- */
 
 async function boot() {
   initIcons();
+  // downloadBtn is a plain <a download> pointing at assets/Anubhab Sen - CV.pdf —
+  // no JS needed to trigger it. To regenerate that PDF after editing data.json,
+  // open doc.html locally and use its own "Download as PDF" button.
 
   try {
     const res = await fetch('data.json');
