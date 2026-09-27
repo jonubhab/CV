@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anubhab Sen</title>
+<link rel="stylesheet" href="doc.css">
+</head>
+<body>
+
+  <div class="toolbar no-print">
+    <button id="printBtn">Download as PDF</button>
+  </div>
+
+  <div class="page-wrap">
+    <div class="page" id="page">
+
+      <header class="doc-header">
+        <div class="doc-header__photo-wrap">
+          <img id="docPhoto" class="doc-header__photo" src="" alt="">
+        </div>
+        <div class="doc-header__right">
+          <div id="docName" class="doc-header__name"></div>
+          <div id="docRole" class="doc-header__role"></div>
+          <div id="docQuick" class="doc-header__quick"></div>
+        </div>
+      </header>
+
+      <div class="doc-body">
+        <aside class="doc-sidebar">
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Contact</h3>
+            <ul id="docContact" class="doc-contact"></ul>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Computer Skills</h3>
+            <div id="docSkills"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Languages</h3>
+            <div id="docLanguages"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Hobbies</h3>
+            <div id="docHobbies"></div>
+          </section>
+
+        </aside>
+
+        <main class="doc-main">
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Education</h3>
+            <div id="docEducation"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Experience</h3>
+            <div id="docExperience"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Extracurricular Activities</h3>
+            <div id="docExtracurricular"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Independent Projects</h3>
+            <div id="docProjects" class="doc-project-grid"></div>
+          </section>
+
+          <section class="doc-section">
+            <h3 class="doc-section__title">Competitive Examinations</h3>
+            <table class="doc-exam-table">
+              <thead><tr><th>Date</th><th>Exam</th><th>Institute</th><th>Result</th></tr></thead>
+              <tbody id="docExams"></tbody>
+            </table>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+<script src="doc.js"></script>
+</body>
+</html>
