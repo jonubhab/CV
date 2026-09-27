@@ -295,6 +295,7 @@ button {
 .entry__title {
   font-weight: 600;
   font-size: 0.95rem;
+  min-width: 100%
 }
 .entry__meta {
   font-size: 0.78rem;
