@@ -86,6 +86,17 @@ function renderSkills(data) {
   });
 }
 
+function renderMathBackground(data) {
+  const container = document.getElementById('mathList');
+  if (!container || !data.mathBackground) return;
+  const group = data.mathBackground;
+  const g = el('div', 'skill-group');
+  const row = el('div', 'tag-row');
+  group.items.forEach(item => row.appendChild(el('span', 'tag', item)));
+  g.appendChild(row);
+  container.appendChild(g);
+}
+
 function renderLanguages(data) {
   const container = document.getElementById('languagesList');
   data.languages.forEach(lang => {
@@ -264,6 +275,7 @@ async function boot() {
     renderProfile(data);
     renderContact(data);
     renderSkills(data);
+    renderMathBackground(data);
     renderLanguages(data);
     renderHobbies(data);
     renderEducation(data);

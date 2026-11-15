@@ -19,6 +19,8 @@
     { "label": "Python Packages", "items": ["NumPy","SciPy","SymPy","Matplotlib","pandas","Tkinter","Flask","Pymunk","Pygame","MSNoise"]}
   ],
 
+  "mathBackground": { "label": "Mathematical Background", "items": ["Number Theory", "Real Analysis", "Calculus", "Linear Algebra", "Group Theory", "Probability", "Discrete Structures"] },
+
   "languages": [
     { "name": "English", "speaking": "100%", "reading": "100%", "writing": "100%" },
     { "name": "Hindi", "speaking": "100%", "reading": "80%", "writing": "90%" },

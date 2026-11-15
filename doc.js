@@ -53,6 +53,14 @@ function render(data) {
     skills.appendChild(g);
   });
 
+  // Mathematical Background
+  const math = document.getElementById('docMath');
+  if (math && data.mathBackground) {
+    const g = el('div', 'doc-skill-group');
+    g.appendChild(el('div', 'doc-tag-row', data.mathBackground.items.join(' · ')));
+    math.appendChild(g);
+  }
+
   // Languages
   const languages = document.getElementById('docLanguages');
   data.languages.forEach(lang => {
