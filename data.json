@@ -12,14 +12,13 @@
   },
 
   "skills": [
+    { "label":  "mathematical background","items": ["Number Theory", "Real Analysis", "Calculus", "Linear Algebra", "Group Theory", "Probability", "Discrete Structures"]},
     { "label": "Programming Languages", "items": ["Python", "Java", "JavaScript", "Scratch"] },
     { "label": "Markup Languages", "items": ["LaTeX", "HTML", "Markdown"] },
     { "label": "Graphing", "items": ["Desmos", "GeoGebra"] },
     { "label": "Data Analysis", "items": ["Tracker", "QGIS"] },
     { "label": "Python Packages", "items": ["NumPy","SciPy","SymPy","Matplotlib","pandas","Tkinter","Flask","Pymunk","Pygame","MSNoise"]}
   ],
-
-  "mathematical background": ["Number Theory", "Real Analysis", "Calculus", "Linear Algebra", "Group Theory", "Probability", "Discrete Structures"],
 
   "languages": [
     { "name": "English", "speaking": "100%", "reading": "100%", "writing": "100%" },
