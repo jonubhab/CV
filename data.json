@@ -12,7 +12,6 @@
   },
 
   "skills": [
-    { "label": "Mathematics","items": ["Number Theory", "Real Analysis", "Calculus", "Linear Algebra", "Group Theory", "Probability", "Discrete Structures"]},
     { "label": "Programming Languages", "items": ["Python", "Java", "JavaScript", "Scratch"] },
     { "label": "Markup Languages", "items": ["LaTeX", "HTML", "Markdown"] },
     { "label": "Graphing", "items": ["Desmos", "GeoGebra"] },
